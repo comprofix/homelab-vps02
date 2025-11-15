@@ -53,6 +53,7 @@ jobs:
       - name: Run Playbook
         run: |        
           ansible-playbook main.yml \
+            --private-key ~/.ssh/id_rsa \
             --extra-vars "traefik_host=${{ secrets.traefik_host }} \
             traefik_api_password=${{ secrets.traefik_api_password }} \
             CF_API_EMAIL=${{ secrets.CF_API_EMAIL }} \

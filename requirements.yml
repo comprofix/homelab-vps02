@@ -1,6 +1,6 @@
 collections:
   - name: community.docker
-    version: ">=3.0.0"
+    version: ">=4.6.0"
 
 roles:
   - name: grzegorzfranus.fail2ban
