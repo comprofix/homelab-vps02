@@ -2,8 +2,6 @@
 - hosts: all
   become: yes
   name: Configure all servers
-  collections:
-    - hifis.toolkit
   pre_tasks:
     - name: Create directories
       file:
