@@ -1,0 +1,15 @@
+ansible_user: administrator
+data_folder: "/data"
+install_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - vim
+  - git
+  - htop
+  - jq
+  - mc
+  - net-tools
+  - unattended-upgrades
+  - sendemail
+  
