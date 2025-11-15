@@ -42,6 +42,10 @@ jobs:
           echo "Host *" > ~/.ssh/config
           echo "  StrictHostKeyChecking no" >> ~/.ssh/config
           chmod 600 ~/.ssh/config
+      
+      - name: Test SSH
+        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no administrator@vps02.comprofix.com "echo connected"
+
 
       - name: Install Galaxy Roles
         run: ansible-galaxy install -r requirements.yml
