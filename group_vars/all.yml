@@ -12,4 +12,3 @@ install_packages:
   - net-tools
   - unattended-upgrades
   - sendemail
-  
