@@ -42,21 +42,17 @@ jobs:
           echo "Host *" > ~/.ssh/config
           echo "  StrictHostKeyChecking no" >> ~/.ssh/config
           chmod 600 ~/.ssh/config
-      
-      - name: Test SSH
-        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no administrator@vps02.comprofix.com "echo connected"
-
-
+ 
       - name: Install Galaxy Roles
         run: ansible-galaxy install -r requirements.yml
       
       - name: Create vars file
         run: |
-          echo "traefik_host: \"vps02.comprofix.com\"" > vars.yml
-          echo "traefik_api_password: \"${{ secrets.TRAEFIK_API_PASSWORD }}\"" >> vars.yml
-          echo "CF_API_EMAIL: \"${{ secrets.CF_API_EMAIL }}\"" >> vars.yml
-          echo "CF_DNS_API_TOKEN: \"${{ secrets.CF_DNS_API_TOKEN }}\"" >> vars.yml
-          echo "traefik_api_user: \"admin\"" >> vars.yml
+          echo 'traefik_host: "vps02.comprofix.com"' > vars.yml
+          echo 'traefik_api_password: "${{ secrets.TRAEFIK_API_PASSWORD }}"' >> vars.yml
+          echo 'CF_API_EMAIL: "${{ secrets.CF_API_EMAIL }}"' >> vars.yml
+          echo 'CF_DNS_API_TOKEN: "${{ secrets.CF_DNS_API_TOKEN }}"' >> vars.yml
+          echo 'traefik_api_user: "admin"' >> vars.yml
 
       - name: Run Playbook
         run: |        
