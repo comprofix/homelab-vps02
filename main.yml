@@ -48,6 +48,9 @@
     - name: Gather facts (always, even with tags)
       ansible.builtin.setup:
       tags: always
+    
+    - name: Update Debian
+      import_tasks: tasks/base.yml 
 
     - name: Deploy traefik
       import_tasks: tasks/traefik.yml 
@@ -57,6 +60,18 @@
     
     - name: Deploy Portainer
       import_tasks: tasks/portainer.yml 
+
+    - name: Configure Unattended Upgrades
+      template:
+        src: ../templates/50unattended-upgrades.j2
+        dest: "/etc/apt/apt.conf.d/50unattended-upgrades"
+        mode: "0600"
+    
+    - name: Restart unattended-upgrades
+      service:
+        name: unattended-upgrades
+        state: restarted
+        enabled: true
   
 
 
