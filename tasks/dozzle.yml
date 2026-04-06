@@ -13,7 +13,7 @@
     #   DOZZLE_REMOTE_AGENT: "omada-lxc.comprofix.xyz:7007"
     labels:
       traefik.enable: "true"
-      traefik.http.routers.dozzle.rule: "Host(`dozzle02.comprofix.com`)"
+      traefik.http.routers.dozzle.rule: "Host(`dozzle{{ traefik_host | regex_search('[0-9]+') }}.comprofix.com`)"
       traefik.http.middlewares.dozzle-auth.basicauth.users: "{{ traefik_api_password }}"
       traefik.http.middlewares.dozzle-https-redirect.redirectscheme.scheme: "https"
       traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto: "https"

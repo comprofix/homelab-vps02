@@ -12,3 +12,5 @@ install_packages:
   - net-tools
   - unattended-upgrades
   - sendemail
+
+traefik_host: "{{ inventory_hostname }}"

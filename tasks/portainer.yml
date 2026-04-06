@@ -23,7 +23,7 @@
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
       traefik.enable: "true"
-      traefik.http.routers.portainer.rule: "Host(`portainer02.comprofix.com`)"
+      traefik.http.routers.portainer.rule: "Host(`portainer{{ traefik_host | regex_search('[0-9]+') }}.comprofix.com`)"
       traefik.http.routers.portainer.entrypoints: "https"
       traefik.http.routers.portainer.tls: "true"
       traefik.http.services.portainer.loadbalancer.server.port: "9443"
